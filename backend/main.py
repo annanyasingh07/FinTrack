@@ -80,3 +80,27 @@ def calculate_portfolio(stocks):
 # Step 4: Run the program
 if __name__ == "__main__":
     calculate_portfolio(portfolio)
+
+# Step 5: Analyze portfolio allocation
+def calculate_allocation(stocks):
+    total_value = sum(
+        stock["shares"] * stock["current_price"]
+        for stock in stocks
+    )
+
+    print("\nFINTRACK - PORTFOLIO ALLOCATION")
+    print("-" * 45)
+
+    for stock in stocks:
+        stock_value = stock["shares"] * stock["current_price"]
+        allocation = (stock_value / total_value) * 100
+
+        print(f"Stock: {stock['symbol']}")
+        print(f"Current Value: ${stock_value:.2f}")
+        print(f"Portfolio Allocation: {allocation:.2f}%")
+        print("-" * 45)
+
+
+# Run portfolio allocation analysis
+if __name__ == "__main__":
+    calculate_allocation(portfolio)
